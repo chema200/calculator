@@ -14,7 +14,7 @@ mvn install:install-file -Dfile=tracer-1.0.0.jar -DgroupId=io.corp -DartifactId=
 2. COMPILAR EL PROYECTO
 
 Compilar y empaquetar el proyecto. Nos situamos en la raiz y ejecutamos el siguiente comando:
-mvn clean install package
+mvn clean install
 
 
 3. EJECUTAR EL JAR GENERADO

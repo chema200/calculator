@@ -35,6 +35,32 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+            <groupId>org.openapitools</groupId>
+            <artifactId>openapi-generator-maven-plugin</artifactId>
+            <version>5.1.0</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                    <configuration>
+                        <inputSpec>
+                            ${project.basedir}/src/main/resources/calculator.yml
+                        </inputSpec>
+                        <generatorName>spring</generatorName>
+                        <apiPackage>com.babel.sanitas.calculator.api</apiPackage>
+                        <modelPackage>com.babel.sanitas.calculator.api.model</modelPackage>
+                        <supportingFilesToGenerate>
+                            ApiUtil.java
+                        </supportingFilesToGenerate>
+                        <configOptions>
+                            <delegatePattern>true</delegatePattern>
+                        </configOptions>
+                    </configuration>
+                </execution>
+            </executions>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
@@ -80,6 +106,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>2.4.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>0.2.1</version>
         </dependency>
     </dependencies>
 </project>

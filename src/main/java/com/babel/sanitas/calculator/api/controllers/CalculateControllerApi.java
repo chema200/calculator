@@ -6,22 +6,19 @@
 package com.babel.sanitas.calculator.api.controllers;
 
 import java.math.BigDecimal;
-
-import com.babel.sanitas.calculator.api.controllers.dto.Operation;
+import com.babel.sanitas.calculator.api.CalculateApiDelegate;
+import com.babel.sanitas.calculator.api.model.Operation;
 import com.babel.sanitas.calculator.services.CalculateService;
 import com.babel.sanitas.calculator.utils.TracerAPIImpl;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-06-21T21:15:16.019744500+02:00[Europe/Paris]")
-
 @RestController
-public class CalculateControllerApi {
+public class CalculateControllerApi implements CalculateApiDelegate {
 
     @Autowired
     private CalculateService calculateService;
@@ -35,7 +32,7 @@ public class CalculateControllerApi {
             @ApiResponse(code = 404, message = "No encontrado"),
             @ApiResponse(code = 500, message = "Internal Server")})
     @PostMapping(value = "/calculate", produces = {"application/json"})
-    public ResponseEntity<BigDecimal> calculateGet(@NotNull @ApiParam(value = "Parámetros de entrada", required = true) @Valid @RequestBody Operation operation) {
+    public ResponseEntity<Object> calculatePost(@NotNull @ApiParam(value = "Parámetros de entrada", required = true) @Valid @RequestBody Operation operation) {
 
         BigDecimal result = calculateService.calculate(operation);
         if (result.equals(new BigDecimal(0))) {

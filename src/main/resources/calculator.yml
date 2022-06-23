@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Calculator API
+  description: >-
+    Esta API, a partir de unos parámetros de entrada nos devuelve el resultado
+    de unas operaciones.
+paths:
+  /calculate:
+    post:
+      description: Calculator
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/operation'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Parámetro inválido
+
+components:
+  schemas:
+    operation:
+      type: object
+      properties:
+        operation:
+          type: string
+          example: +
+        parameters:
+          type: array
+          items:
+            type: number
+          example: [1000,1000]
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/JMMA1985/CalculatorAPI/1.0.0

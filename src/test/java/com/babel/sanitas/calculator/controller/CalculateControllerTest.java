@@ -1,6 +1,6 @@
 package com.babel.sanitas.calculator.controller;
 
-import com.babel.sanitas.calculator.api.controllers.dto.Operation;
+import com.babel.sanitas.calculator.api.model.Operation;
 import com.babel.sanitas.calculator.services.CalculateService;
 import com.babel.sanitas.calculator.services.impl.CalculateServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,10 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +38,9 @@ public class CalculateControllerTest {
         List<BigDecimal> list = new ArrayList<BigDecimal>();
         list.add(new BigDecimal(100));
         list.add(new BigDecimal(200));
-        Operation operation = new Operation("+", list);
+        Operation operation = new Operation();
+        operation.setOperation("+");
+        operation.setParameters(list);
 
         BigDecimal bigDecimalResult = new BigDecimal(300);
 
@@ -65,7 +65,9 @@ public class CalculateControllerTest {
         List<BigDecimal> list = new ArrayList<BigDecimal>();
         list.add(new BigDecimal(100));
         list.add(new BigDecimal(200));
-        Operation operation = new Operation("+", list);
+        Operation operation = new Operation();
+        operation.setOperation("+");
+        operation.setParameters(list);
 
         BigDecimal bigDecimalResult = new BigDecimal(100);
 
@@ -90,7 +92,9 @@ public class CalculateControllerTest {
         List<BigDecimal> list = new ArrayList<BigDecimal>();
         list.add(new BigDecimal(100));
         list.add(new BigDecimal(50));
-        Operation operation = new Operation("-", list);
+        Operation operation = new Operation();
+        operation.setOperation("-");
+        operation.setParameters(list);
 
         BigDecimal bigDecimalResult = new BigDecimal(50);
 
@@ -115,7 +119,9 @@ public class CalculateControllerTest {
         List<BigDecimal> list = new ArrayList<BigDecimal>();
         list.add(new BigDecimal(100));
         list.add(new BigDecimal(50));
-        Operation operation = new Operation("-", list);
+        Operation operation = new Operation();
+        operation.setOperation("-");
+        operation.setParameters(list);
 
         BigDecimal bigDecimalResult = new BigDecimal(0);
 

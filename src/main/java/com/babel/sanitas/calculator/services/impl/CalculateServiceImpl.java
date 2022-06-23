@@ -1,12 +1,10 @@
 package com.babel.sanitas.calculator.services.impl;
 
-import com.babel.sanitas.calculator.api.controllers.dto.Operation;
+import com.babel.sanitas.calculator.api.model.Operation;
+
 import com.babel.sanitas.calculator.services.CalculateService;
-import javassist.NotFoundException;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-
 import java.math.BigDecimal;
 import java.util.Optional;
 
